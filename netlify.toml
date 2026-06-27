@@ -1,18 +1,18 @@
 # netlify.toml
 
-# 1. AMANKAN ASET STATIS: Kalau ada request ke /assets, kasih file aslinya, jangan di-redirect!
+# 1. AMANKAN JALUR ASET (Penting agar React Router tidak dikirimi HTML)
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
   status = 200
 
-# 2. PENGALIHAN HALAMAN: Baru sisanya (seperti /layanan, /tentang) diarahkan ke index.html
+# 2. PENGALIHAN URL HALAMAN SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# 3. OPTIMALISASI CACHE & KEAMANAN ASET
+# 3. KEAMANAN & CACHE ASET
 [[headers]]
   for = "/assets/*"
   [headers.values]
