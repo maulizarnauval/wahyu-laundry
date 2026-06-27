@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
    "clean": "rimraf .react-router build",
-    "build": "react-router build && cp public/_redirects build/client/_redirects",
+    "build": "react-router build && (cp public/_redirects build/client/_redirects || true)",
     "dev": "react-router dev",
     "typecheck": "react-router typegen && tsc",
     "preview": "vite preview"
