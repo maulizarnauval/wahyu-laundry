@@ -1,18 +1,25 @@
 # netlify.toml
 
-# 1. AMANKAN JALUR ASET (Penting agar React Router tidak dikirimi HTML)
+# 1. AMANKAN JALUR ASET UTAMA
 [[redirects]]
   from = "/assets/*"
   to = "/assets/:splat"
   status = 200
 
-# 2. PENGALIHAN URL HALAMAN SPA
+# 2. AMANKAN FILE JSON & MANIFEST (Pencegah utama error "Unexpected token <")
+[[redirects]]
+  from = "/*.json"
+  to = "/:splat.json"
+  status = 200
+
+# 3. PENGALIHAN URL HALAMAN SPA (Ditambahkan force = false agar tidak menabrak file asli)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
-# 3. KEAMANAN & CACHE ASET
+# 4. KEAMANAN & CACHE ASET
 [[headers]]
   for = "/assets/*"
   [headers.values]
