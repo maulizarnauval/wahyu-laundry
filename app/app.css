@@ -1,15 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 💎 Brand Colors Wahyu Laundry */
+  --color-brand-primary: #0a65ff;
+  --color-brand-secondary: #00e5ff;
+  --color-brand-dark: #0f172a;
+  --color-brand-light: #f8fafc;
+
+  /* 🌌 Custom Ambient Gradient Glow (Merujuk Referensi Gambar Premium) */
+  --bg-image-ambient-wahyu: linear-gradient(
+    135deg, 
+    rgba(10, 101, 255, 0.08) 0%,    /* Bias Biru Lembut di sisi kiri */
+    rgba(255, 255, 255, 1) 50%,     /* Menjaga Whitespace Murni di tengah */
+    rgba(0, 229, 255, 0.05) 100%    /* Sentuhan Cyan Ringan di kanan */
+  );
+
+  /* 🚀 Pendaftaran Keyframes Native Sesuai Standar Kompilasi Tailwind v4 (Tanpa Tanda ":") */
+  @keyframes float {
+    0%, 100% { transform: translateY(4px); }
+    50% { transform: translateY(-12px); }
+  }
+  
+  @keyframes pulseAmbient {
+    0%, 100% { 
+      opacity: 0.5; 
+      transform: scale(1) translate(-50%, -50%); 
+    }
+    50% { 
+      opacity: 0.8; 
+      transform: scale(1.08) translate(-50%, -50%); 
+    }
+  }
+
+  /* 🕹️ Keyframes Baru: Mikro-Interaksi Bouncing Halus di Tengah (X & Y) */
+  @keyframes bounce-subtle {
+    0%, 100% { 
+      transform: translate(-50%, -52%); 
+    }
+    50% { 
+      transform: translate(-50%, -48%); 
+    }
+  }
+
+  /* 🛠️ Pemetaan Variabel Menjadi Kelas Utilitas Animasi Tailwind (Siap Pakai) */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-ambient: pulseAmbient 8s ease-in-out infinite;
+  --animate-bounce-subtle: bounce-subtle 4s ease-in-out infinite;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* ⚡ Utilitas Tambahan untuk Kehalusan Akselerasi Perangkat Keras (Hardware Acceleration) */
+@layer utilities {
+  .animate-float, .animate-pulse-ambient, .animate-bounce-subtle {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
   }
 }
