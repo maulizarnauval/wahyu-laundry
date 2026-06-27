@@ -1,33 +1,11 @@
 # netlify.toml
 
-# 1. AMANKAN JALUR ASET UTAMA
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
+# =========================================================================
+# ⚠️ SELURUH ATURAN REDIRECTS SUDAH DIPINDAHKAN KE FILE public/_redirects
+# JANGAN MENULISKAN [[redirects]] DI SINI AGAR TIDAK TERJADI BENTROKAN KODE
+# =========================================================================
 
-# 2. AMANKAN FILE JSON & MANIFEST
-[[redirects]]
-  from = "/*.json"
-  to = "/:splat.json"
-  status = 200
-
-# 🌟 3. SOLUSI MUTLAK: Loloskan Request Data Internal React Router v8 (?_data=...)
-# Aturan ini menyuruh Netlify: "Jika URL meminta parameter _data, JANGAN dialihkan ke index.html!"
-[[redirects]]
-  from = "/*"
-  query = { _data = ":data" }
-  to = "/:splat"
-  status = 200
-
-# 4. PENGALIHAN URL HALAMAN SPA (Hanya untuk rute navigasi bersih browser)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-
-# 5. KEAMANAN & CACHE ASET
+# 🛡️ KEAMANAN & OPTIMALISASI CACHE ASET STATIS
 [[headers]]
   for = "/assets/*"
   [headers.values]
