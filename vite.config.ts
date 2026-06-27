@@ -16,9 +16,9 @@ export default defineConfig({
   },
 
   build: {
-    cssMinify: "lightningcss",
-    reportCompressedSize: false,
-    minify: "esbuild", // Menggunakan default esbuild yang sudah sangat cepat dan aman
+    cssMinify: "lightningcss", // Memaksimalkan kompresi CSS native v4
+    reportCompressedSize: false, // Mempercepat proses build di lingkungan produksi
+    minify: true, // 🌟 REKOMENDASI UTAMA: Menggunakan kompresi internal native yang stabil dan aman di Vercel
     
     rollupOptions: {
       output: {
